@@ -16,6 +16,7 @@ let maxMonthly = 20000;
 function onReady() {
     $('#employee-form').on('submit', onSubmit);
     $('#employee-table-body').on('click', '.delete-employee-btn', onDelete);
+    render();
 }
 
 /**
@@ -26,20 +27,35 @@ function onSubmit(evt) {
     evt.preventDefault();
     console.log('testing');
 
-    let first = $('#input-first-name').val();
-    let last = $('#input-last-name').val();
-    let id = $('#input-id').val();
-    let title = $('#input-title').val();
-    let salary = $('#input-salary').val();
-    let employee = {
-        first: first,
-        last: last,
-        id: Number(id),
-        title: title,
-        salary: Number(salary)
-    }
+    let firstIn = $('#input-first-name');
+    let lastIn = $('#input-last-name');
+    let idIn = $('#input-id');
+    let titleIn = $('#input-title');
+    let salaryIn = $('#input-salary');
 
-    employees.push(employee);
+    let first = firstIn.val();
+    let last = lastIn.val();
+    let id = idIn.val();
+    let title = titleIn.val();
+    let salary = salaryIn.val();
+
+    if (first && last && id && title && salary) {
+        let employee = {
+            first: first,
+            last: last,
+            id: Number(id),
+            title: title,
+            salary: Number(salary)
+        }
+        employees.push(employee);
+    }
+    firstIn.val('');
+    lastIn.val('');
+    idIn.val('');
+    titleIn.val('');
+    salaryIn.val('');
+    console.log(first)
+
     render();
 }
 
@@ -64,11 +80,11 @@ function render() {
     for (let employee of employees) {
         table.append(`
         <tr>
-            <td>${employee.first}</td>
-            <td>${employee.last}</td>
-            <td>${employee.id}</td>
-            <td>${employee.title}</td>
-            <td>${formatCurrency(employee.salary)}</td>
+            <td><div class="td-internal-div">${employee.first}</div></td>
+            <td><div class="td-internal-div">${employee.last}</div></td>
+            <td><div class="td-internal-div">${employee.id}</div></td>
+            <td><div class="td-internal-div">${employee.title}</div></td>
+            <td><div class="td-internal-div">${formatCurrency(employee.salary)}</div></td>
             <td>
                 <button class="delete-employee-btn delete" style="width: 100%;">
                     ❌
@@ -78,7 +94,7 @@ function render() {
         totalMonthly += employee.salary / 12;
     }
     table.children().odd().css(`background-color`, `lightgray`)
-    let totalCostRoundAndFormat = formatCurrency(((Math.round(totalMonthly*100))/100).toFixed(2));
+    let totalCostRoundAndFormat = formatCurrency(((Math.round(totalMonthly * 100)) / 100).toFixed(2));
     let monthly = $('#monthly');
     if (totalMonthly > maxMonthly) {
         monthly.addClass('make-it-red');
