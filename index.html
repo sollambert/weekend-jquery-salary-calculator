@@ -12,43 +12,45 @@
 </head>
 
 <body>
-    <h1>Add Employee</h1>
-    <div id="form">
-        <form id="employee-form">
-            <span>
-                <input id="input-first-name" type="text" placeholder="First Name" />
-                <input id="input-last-name" type="text" placeholder="Last Name" />
-                <input id="input-id" type="number" placeholder="ID Number" />
-                <input id="input-title" type="text" placeholder="Job Title" />
-                <input id="input-salary" type="number" placeholder="Annual Salary" />
-                <div id="submit">
-                    <input id='input-submit' type="submit" />
-                </div>
-            </span>
-        </form>
-    </div>
-    <div id="table">
-        <table>
-            <thead>
-                <tr>
-                    <td class="head">First</td>
-                    <td class="head">Last</td>
-                    <td class="head id">ID #</td>
-                    <td class="head">Title</td>
-                    <td class="head salary">Salary</td>
-                    <td class="head delete">Delete</td>
-                </tr>
-            </thead>
-            <tbody id="employee-table-body">
-                <!-- Employee Table Here -->
-            </tbody>
-        </table>
-    </div>
-    <footer>
-        <div id="cost">
-            <h2 id="monthly">Monthly Cost:</h2>
+    <div class="flex-container">
+        <h1>Add Employee</h1>
+        <div id="form">
+            <form id="employee-form">
+                <span id="span-form">
+                    <input id="input-first-name" type="text" placeholder="First Name" />
+                    <input id="input-last-name" type="text" placeholder="Last Name" />
+                    <input id="input-id" type="number" placeholder="ID Number" />
+                    <input id="input-title" type="text" placeholder="Job Title" />
+                    <input id="input-salary" type="number" placeholder="Annual Salary" />
+                    <!--<div id="submit">-->
+                        <input id='input-submit' type="submit" />
+                    <!--</div>-->
+                </span>
+            </form>
         </div>
-    </footer>
+        <div id="table">
+            <table>
+                <thead>
+                    <tr>
+                        <td class="head">First</td>
+                        <td class="head">Last</td>
+                        <td class="head id">ID #</td>
+                        <td class="head">Title</td>
+                        <td class="head salary">Salary</td>
+                        <td class="head delete">Delete</td>
+                    </tr>
+                </thead>
+                <tbody id="employee-table-body">
+                    <!-- Employee Table Here -->
+                </tbody>
+            </table>
+        </div>
+        <footer>
+            <div id="cost">
+                <h2 id="monthly">Monthly Cost:</h2>
+            </div>
+        </footer>
+    </div>
 </body>
 
 </html>
