@@ -13,32 +13,40 @@
 
 <body>
     <h1>Add Employee</h1>
-    <form id="employee-form">
-        <span>
-            <input id="input-first-name" type="text" placeholder="First Name" />
-            <input id="input-last-name" type="text" placeholder="Last Name" />
-            <input id="input-id" type="number" placeholder="ID Number" />
-            <input id="input-title" type="text" placeholder="Job Title" />
-            <input id="input-salary" type="number" placeholder="Annual Salary" />
-            <div id="submit-div">
-                <input id='input-submit' type="submit" />
-            </div>
-        </span>
-    </form>
-    <table>
-        <thead>
-            <tr>
-                <td>First</td>
-                <td>Last</td>
-                <td>ID #</td>
-                <td>Title</td>
-                <td>Salary</td>
-            </tr>
-        </thead>
-        <tbody id="employee-table-body">
-            <!-- Employee Table Here -->
-        </tbody>
-    </table>
+    <div id="form">
+        <form id="employee-form">
+            <span>
+                <input id="input-first-name" type="text" placeholder="First Name" />
+                <input id="input-last-name" type="text" placeholder="Last Name" />
+                <input id="input-id" type="number" placeholder="ID Number" />
+                <input id="input-title" type="text" placeholder="Job Title" />
+                <input id="input-salary" type="number" placeholder="Annual Salary" />
+                <div id="submit-div">
+                    <input id='input-submit' type="submit" />
+                </div>
+            </span>
+        </form>
+    </div>
+    <div id="table">
+        <table>
+            <thead>
+                <tr>
+                    <td class="head">First</td>
+                    <td class="head">Last</td>
+                    <td class="head">ID #</td>
+                    <td class="head">Title</td>
+                    <td class="head">Salary</td>
+                    <td class="head">Delete</td>
+                </tr>
+            </thead>
+            <tbody id="employee-table-body">
+                <!-- Employee Table Here -->
+            </tbody>
+        </table>
+    </div>
+    <div id="cost">
+        <h2>Monthly Cost:</h2>
+    </div>
 </body>
 
 </html>

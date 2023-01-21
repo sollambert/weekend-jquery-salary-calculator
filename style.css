@@ -1,3 +1,31 @@
-table, th, td {
-        border-style: 1em, solid, black;
+table {
+        border: .1em solid black;
+        width: 100%;
+}
+
+td {
+        border: .1em solid black;
+        padding: .1em;
+        text-align: right;
+}
+
+td.head {
+        text-align: center;
+}
+
+.delete-btn {
+        width: auto;
+}
+
+div#form {
+        float: left;
+}
+
+div#table {
+        float: center;
+        width: 100%;
+}
+
+div#cost {
+        float: right;
 }

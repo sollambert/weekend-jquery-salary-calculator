@@ -51,7 +51,7 @@ function render() {
             <td>${employee.title}</td>
             <td>${formatCurrency(employee.salary)}</td>
             <td>
-                <button class="delete-employee-btn">
+                <button class="delete-employee-btn" style="width: 100%;">
                     ❌
                 </button>
             </td>
