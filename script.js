@@ -1,5 +1,5 @@
 console.log('loaded boy')
-$(function() {
+$(function () {
     onReady();
 });
 
@@ -21,9 +21,9 @@ function onSubmit(evt) {
     let employee = {
         first: first,
         last: last,
-        id: id,
+        id: Number(id),
         title: title,
-        salary: salary
+        salary: Number(salary)
     }
 
     employees.push(employee);
@@ -31,5 +31,20 @@ function onSubmit(evt) {
 }
 
 function render() {
-    
+    let table = $('#employee-table-body');
+    table.empty();
+    for (let employee of employees) {
+        table.append(`
+        <tr>
+            <td>${employee.first}</td>
+            <td>${employee.last}</td>
+            <td>${employee.id}</td>
+            <td>${employee.title}</td>
+            <td>${formatCurrency(employee.salary)}</td>
+        </tr>`);
+    }
+}
+
+function formatCurrency(dollars) {
+    return (`$` + (new Intl.NumberFormat('en-US').format(Number(dollars))));
 }
