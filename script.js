@@ -59,6 +59,7 @@ function render() {
         </tr>`);
         totalMonthly += employee.salary / 12;
     }
+    table.children().odd().css(`background-color`, `lightgray`)
     let totalCostRoundAndFormat = formatCurrency(((Math.round(totalMonthly*100))/100).toFixed(2));
     let monthly = $('#monthly');
     monthly.text(`Monthly Cost: ${totalCostRoundAndFormat}`);
