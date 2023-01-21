@@ -1,3 +1,7 @@
+body {
+        font-family: Futura,Trebuchet MS,Arial,sans-serif;
+}
+
 table {
         border-spacing: 0;
         width: 100%;
@@ -30,6 +34,14 @@ td.delete {
         width: auto;
 }
 
+form {
+        width: 100%;
+}
+
+div#submit {
+        float: right;
+}
+
 div#form {
         float: left;
         height: 10vh;
@@ -39,7 +51,7 @@ div#table {
         position: absolute;
         border: .1em solid black;
         float: center;
-        width: 99%;
+        width: 98.5%;
         height: 75vh;
         top: 17.5vh;
         bottom: 7.5vh;
