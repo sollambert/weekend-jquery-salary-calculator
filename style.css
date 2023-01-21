@@ -1,16 +1,29 @@
 table {
         border: .1em solid black;
         width: 100%;
+        table-layout: fixed;
 }
 
 td {
         border: .1em solid black;
         padding: .1em;
-        text-align: right;
+        text-align: center;
 }
 
 td.head {
         text-align: center;
+}
+
+td.id {
+        width: 7.5%;
+}
+
+td.salary {
+        width: 7.5%;
+}
+
+td.delete {
+        width: 5%;
 }
 
 .delete-btn {

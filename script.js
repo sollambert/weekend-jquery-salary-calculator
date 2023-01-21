@@ -41,6 +41,7 @@ function onDelete() {
 
 function render() {
     let table = $('#employee-table-body');
+    let totalMonthly = 0;
     table.empty();
     for (let employee of employees) {
         table.append(`
@@ -51,12 +52,16 @@ function render() {
             <td>${employee.title}</td>
             <td>${formatCurrency(employee.salary)}</td>
             <td>
-                <button class="delete-employee-btn" style="width: 100%;">
+                <button class="delete-employee-btn delete" style="width: 100%;">
                     ❌
                 </button>
             </td>
         </tr>`);
+        totalMonthly += employee.salary / 12;
     }
+    let totalCostRoundAndFormat = formatCurrency(((Math.round(totalMonthly*100))/100).toFixed(2));
+    let monthly = $('#monthly');
+    monthly.text(`Monthly Cost: ${totalCostRoundAndFormat}`);
 }
 
 function formatCurrency(dollars) {
