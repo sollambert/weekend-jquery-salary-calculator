@@ -32,15 +32,27 @@ td.delete {
 
 div#form {
         float: left;
+        height: 10vh;
 }
 
 div#table {
+        position: absolute;
+        border: .1em solid black;
         float: center;
-        width: 100%;
+        width: 99%;
+        height: 75vh;
+        top: 17.5vh;
+        bottom: 7.5vh;
+        overflow-y: scroll;
 }
 
 div#cost {
+        height: 3vh;
         position:absolute;
         float: right;
-        bottom:0;
+        bottom: 5vh;
+}
+
+.make-it-red {
+        background-color: red;
 }

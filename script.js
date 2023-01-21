@@ -3,7 +3,8 @@ $(function () {
     onReady();
 });
 
-let employees = []
+let employees = [];
+let maxMonthly = 20000;
 
 function onReady() {
     $('#employee-form').on('submit', onSubmit);
@@ -62,6 +63,11 @@ function render() {
     table.children().odd().css(`background-color`, `lightgray`)
     let totalCostRoundAndFormat = formatCurrency(((Math.round(totalMonthly*100))/100).toFixed(2));
     let monthly = $('#monthly');
+    if (totalMonthly > maxMonthly) {
+        monthly.addClass('make-it-red');
+    } else {
+        monthly.removeClass('make-it-red');
+    }
     monthly.text(`Monthly Cost: ${totalCostRoundAndFormat}`);
 }
 
