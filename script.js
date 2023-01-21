@@ -7,6 +7,7 @@ let employees = []
 
 function onReady() {
     $('#employee-form').on('submit', onSubmit);
+    $('#employee-table-body').on('click', '.delete-employee-btn', onDelete);
 }
 
 function onSubmit(evt) {
@@ -30,6 +31,14 @@ function onSubmit(evt) {
     render();
 }
 
+function onDelete() {
+    let row = $(this).parent().parent();
+    let rowIndex = row.index();
+    console.log(`deleted: `, employees[rowIndex]);
+    employees.splice(rowIndex, 1);
+    render();
+}
+
 function render() {
     let table = $('#employee-table-body');
     table.empty();
@@ -41,6 +50,11 @@ function render() {
             <td>${employee.id}</td>
             <td>${employee.title}</td>
             <td>${formatCurrency(employee.salary)}</td>
+            <td>
+                <button class="delete-employee-btn">
+                    ❌
+                </button>
+            </td>
         </tr>`);
     }
 }
