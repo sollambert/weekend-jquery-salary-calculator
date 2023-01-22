@@ -7,8 +7,27 @@ $(function () {
     onReady();
 });
 
-let employees = [];
+let employees = [
+    {first: 'Jen',
+    last: 'Barber',   
+    id: 4521,
+    title: 'Team Lead',
+    salary: 80000
+},
+ {first: 'Maurice',
+ last: 'Moss',
+ id: 8724,
+ title: 'Support Team',
+ salary: 58000
+},
+{first: 'Roy',
+last: 'Smith',
+id: 9623,
+title: 'Quality Assurance',
+salary: 48000}  
+];
 let maxMonthly = 20000;
+let editId = 0;
 
 /**
  * onReady function called by jQuery when document has fully loaded
@@ -16,6 +35,9 @@ let maxMonthly = 20000;
 function onReady() {
     $('#employee-form').on('submit', onSubmit);
     $('#employee-table-body').on('click', '.delete-employee-btn', onDelete);
+    $('#employee-table-body').on('click', '.edit-btn', onEdit);
+    $('#employee-table-body').on('click', '.accept-edit-btn', onAcceptEdit);
+    $('#employee-table-body').on('click', '.cancel-edit-btn', onCancel);
     render();
 }
 
@@ -54,7 +76,6 @@ function onSubmit(evt) {
     idIn.val('');
     titleIn.val('');
     salaryIn.val('');
-    console.log(first)
 
     render();
 }
@@ -70,27 +91,91 @@ function onDelete() {
     render();
 }
 
+function onEdit() {
+    let row = $(this).parent().parent();
+    let rowIndex = row.index();
+    editId = employees[rowIndex].id;
+    render();
+}
+
+function onAcceptEdit() {
+    let row = $(this).parent().parent();
+    let rowIndex = row.index();
+    let firstEdit = $('#edit-first');
+    let lastEdit = $('#edit-last');
+    let idEdit = $('#edit-id');
+    let titleEdit = $('#edit-title');
+    let salaryEdit = $('#edit-salary');
+
+    let emp = employees[rowIndex];
+
+    let first = firstEdit.val();
+    let last = lastEdit.val();
+    let id = idEdit.val();
+    let title = titleEdit.val();
+    let salary = salaryEdit.val();
+
+    emp.first = first;
+    emp.last = last;
+    emp.id = Number(id);
+    emp.title = title;
+    emp.salary = Number(salary);
+
+    editId = 0;
+    console.log(first, last, id, title, salary, editId);
+    render();
+}
+
+function onCancel() {
+    editId = 0;
+    render();
+}
+
 /**
  * Render method for jQuery to update page based on state
  */
 function render() {
-    let table = $('#employee-table-body');
     let totalMonthly = 0;
+    let table = $('#employee-table-body');
     table.empty();
+    console.log(editId);
     for (let employee of employees) {
-        table.append(`
-        <tr>
-            <td><div class="td-internal-div">${employee.first}</div></td>
-            <td><div class="td-internal-div">${employee.last}</div></td>
-            <td><div class="td-internal-div">${employee.id}</div></td>
-            <td><div class="td-internal-div">${employee.title}</div></td>
-            <td><div class="td-internal-div">${formatCurrency(employee.salary)}</div></td>
-            <td>
-                <button class="delete-employee-btn delete" style="width: 100%;">
-                    ❌
-                </button>
-            </td>
-        </tr>`);
+        if (editId == 0 || editId != employee.id) {
+            table.append(`
+            <tr>
+                <td><div class="td-internal-div">${employee.first}</div></td>
+                <td><div class="td-internal-div">${employee.last}</div></td>
+                <td><div class="td-internal-div">${employee.id}</div></td>
+                <td><div class="td-internal-div">${employee.title}</div></td>
+                <td><div class="td-internal-div">${formatCurrency(employee.salary)}</div></td>
+                <td>
+                    <button class="edit-btn" style="width: 45%;">
+                        📝
+                    </button>
+                    <button class="delete-employee-btn delete" style="width: 45%;">
+                        ❌
+                    </button>
+                </td>
+            </tr>`);
+        } else {
+            console.log(employee)
+            table.append(`
+            <tr>
+                <td><div><input id="edit-first" value="${employee.first}" type="text"></div></td>
+                <td><div><input id="edit-last" value="${employee.last}" type="text"></div></td>
+                <td><div><input id="edit-id" value="${employee.id}" type="number"></div></td>
+                <td><div><input id="edit-title" value="${employee.title}" type="text"></div></td>
+                <td><div><input id="edit-salary" value="${employee.salary}" type="number"></div></td>
+                <td>
+                    <button class="accept-edit-btn" style="width: 45%;">
+                        ✅
+                    </button>
+                    <button class="cancel-edit-btn" style="width: 45%;">
+                        ❌
+                    </button>
+                </td>
+            </tr>`);
+        }
         totalMonthly += employee.salary / 12;
     }
     table.children().odd().css(`background-color`, `lightgray`)

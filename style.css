@@ -47,6 +47,10 @@ td.delete {
         width: 5%;
 }
 
+input.edit {
+        padding: 5%;
+}
+
 .delete-btn {
         width: auto;
 }
