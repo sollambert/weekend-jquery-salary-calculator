@@ -72,7 +72,7 @@ div#table {
         border: .1em solid black;
         float: center;
         width: 100%;
-        height: 82.5vh;
+        height: 65vh;
         overflow-y: scroll;
         overflow-x: hidden;
         background-color: bisque;

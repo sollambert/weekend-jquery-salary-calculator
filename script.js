@@ -8,23 +8,27 @@ $(function () {
 });
 
 let employees = [
-    {first: 'Jen',
-    last: 'Barber',   
-    id: 4521,
-    title: 'Team Lead',
-    salary: 80000
-},
- {first: 'Maurice',
- last: 'Moss',
- id: 8724,
- title: 'Support Team',
- salary: 58000
-},
-{first: 'Roy',
-last: 'Smith',
-id: 9623,
-title: 'Quality Assurance',
-salary: 48000}  
+    {
+        first: 'Jen',
+        last: 'Barber',
+        id: 4521,
+        title: 'Team Lead',
+        salary: 80000
+    },
+    {
+        first: 'Maurice',
+        last: 'Moss',
+        id: 8724,
+        title: 'Support Team',
+        salary: 58000
+    },
+    {
+        first: 'Roy',
+        last: 'Smith',
+        id: 9623,
+        title: 'Quality Assurance',
+        salary: 48000
+    }
 ];
 let maxMonthly = 20000;
 let editId = 0;
