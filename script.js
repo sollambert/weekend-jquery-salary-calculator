@@ -61,20 +61,21 @@ function onSubmit(evt) {
 
     let first = firstIn.val();
     let last = lastIn.val();
-    let id = idIn.val();
+    let id = Number(idIn.val());
     let title = titleIn.val();
-    let salary = salaryIn.val();
+    let salary = Number(salaryIn.val());
 
     if (first && last && id && title && salary) {
         let employee = {
-            first: first,
-            last: last,
-            id: Number(id),
-            title: title,
-            salary: Number(salary)
+            first,
+            last,
+            id,
+            title,
+            salary
         }
         employees.push(employee);
     }
+    
     firstIn.val('');
     lastIn.val('');
     idIn.val('');
