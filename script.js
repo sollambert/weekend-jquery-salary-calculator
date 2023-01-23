@@ -75,7 +75,7 @@ function onSubmit(evt) {
         }
         employees.push(employee);
     }
-    
+
     firstIn.val('');
     lastIn.val('');
     idIn.val('');
@@ -89,7 +89,7 @@ function onSubmit(evt) {
  * Event handler for buttons to delete employees from table
  */
 function onDelete() {
-    let row = $(this).parent().parent();
+    let row = $(this).closest('tr');
     let rowIndex = row.index();
     console.log(`deleted: `, employees[rowIndex]);
     employees.splice(rowIndex, 1);
@@ -97,7 +97,7 @@ function onDelete() {
 }
 
 function onEdit() {
-    let row = $(this).parent().parent();
+    let row = $(this).closest('tr');
     let rowIndex = row.index();
     editId = employees[rowIndex].id;
     render();
@@ -184,7 +184,7 @@ function render() {
         totalMonthly += employee.salary / 12;
     }
     table.children().odd().css(`background-color`, `lightgray`)
-    let totalCostRoundAndFormat = formatCurrency(((Math.round(totalMonthly * 100)) / 100).toFixed(2));
+    let totalCostRoundAndFormat = formatCurrency(totalMonthly);
     let monthly = $('#monthly');
     if (totalMonthly > maxMonthly) {
         monthly.addClass('make-it-red');
@@ -200,5 +200,5 @@ function render() {
  * @returns a string reflecting an amount of USD
  */
 function formatCurrency(dollars) {
-    return (`$` + (new Intl.NumberFormat('en-US').format(Number(dollars))));
+    return (new Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD'}).format(Number(dollars)));
 }
